@@ -28,7 +28,7 @@ test("HTTP endpoints", async (t) => {
 
       const body = await response.json();
       // Erreur volontaire pour vérifier la CI.
-      assert.equal(body.service, "wrong-name");
+      assert.equal(body.service, "platform-demo");
     });
 
     await t.test("health is healthy", async () => {
