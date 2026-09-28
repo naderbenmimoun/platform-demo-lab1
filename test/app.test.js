@@ -16,7 +16,6 @@ test("HTTP endpoints", async (t) => {
   );
 
   try {
-    // Attend le message de démarrage du serveur.
     await once(server.stdout, "data", {
       signal: AbortSignal.timeout(5000),
     });
@@ -28,7 +27,8 @@ test("HTTP endpoints", async (t) => {
       assert.equal(response.status, 200);
 
       const body = await response.json();
-      assert.equal(body.service, "platform-demo");
+      // Erreur volontaire pour vérifier la CI.
+      assert.equal(body.service, "wrong-name");
     });
 
     await t.test("health is healthy", async () => {
